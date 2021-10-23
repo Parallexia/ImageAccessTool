@@ -1,0 +1,10 @@
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\PictureMixer.exe
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\PictureMixer.dll
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\PictureMixer.deps.json
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\PictureMixer.runtimeconfig.json
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\PictureMixer.pdb
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\Microsoft.Win32.SystemEvents.dll
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\System.Drawing.Common.dll
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\code_files\c#\PictureMixer\PictureMixer\bin\Release\net5.0\publish\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

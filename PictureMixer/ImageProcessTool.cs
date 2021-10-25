@@ -82,12 +82,12 @@ namespace PictureMixer
                 Console.WriteLine("图片大小变化未成功");
                 return bitmap;
             }
-            bitmap.SetResolution(width, height);
+            bitmap = new Bitmap(bitmap, width, height);
             Console.WriteLine("x轴变化倍数:" + (width1 / width));
             Console.WriteLine("Y轴变化倍数:" + (height1 / height));
             return bitmap;
         }
-        //只修改了这个
+        
         public static Bitmap ChangeImageScale(SizeOfImage sizeofImage, Bitmap bitmap)
         {
             Console.WriteLine(bitmap.Tag);
@@ -101,17 +101,24 @@ namespace PictureMixer
                 height = (int)sizeofImage.height;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("图片大小变化未成功");
+                Console.WriteLine("图片大小变化未成功"+e);
                 return bitmap;
             }
-            Size size = new Size();
-            size.Width = width;
-            size.Height = height;
+
+            Size size = new Size
+            {
+                Width = width,
+                Height = height
+            };
+
             bitmap = new Bitmap(bitmap,size);
-            double x = (width / (width1 + 0.0));
-            double y = (height / (height1 + 0.0));
+
+            /*计算图像改变的比例*/
+
+            double x = width / (width1 + 0.0);
+            double y = height / (height1 + 0.0);
             Console.WriteLine("x轴变化倍数:" + x);
             Console.WriteLine("Y轴变化倍数:" + y);
             return bitmap;
@@ -144,14 +151,18 @@ namespace PictureMixer
             SizeOfImage belowSize = GetImageSize(bitmapBelow);//原图打开时
             int alpha, grey, greyBelow, greyLayer;
 
+            /*判断图像的大小并使两张图片的大小一致*/
+
             if ((layerSize.height * layerSize.width) > (belowSize.height * belowSize.width))
             { bitmapBelow = ChangeImageScale(layerSize, bitmapBelow); }
             else
             { bitmapLayer = ChangeImageScale(belowSize, bitmapLayer); }
+
             layerSize = GetImageSize(bitmapLayer);//缩略图打开时
 
             bitmap = ChangeImageScale(layerSize,bitmap);
 
+            /*对表图和里图进行像素的运算*/
 
             for (int height = 1; height < layerSize.height; height++)
             {
@@ -160,11 +171,18 @@ namespace PictureMixer
                     //piexlBelow = bitmapBelow.GetPixel(width, height);
                     //piexlLayer = bitmapLayer.GetPixel(width, height);
 
+                    /*生成里图的灰度图*/
                     greyBelow = (short)
                          (bitmapBelow.GetPixel(width, height).R * 0.3
                         + bitmapBelow.GetPixel(width, height).G * 0.59
                         + bitmapBelow.GetPixel(width, height).B * 0.11);
+
+                    /*处理里图的亮度，防止合成时数值溢出*/
+
                     greyBelow = (int)((greyBelow/256F)*128); 
+                    
+                    /*生成表图的灰度图*/
+                    
                     greyLayer = (short)
                          (bitmapLayer.GetPixel(width, height).R * 0.3
                         + bitmapLayer.GetPixel(width, height).G * 0.59
@@ -183,9 +201,9 @@ namespace PictureMixer
                     {
                         bitmap.SetPixel(width, height, color);
                     }
-                    catch 
+                    catch (Exception e)
                     {
-                        Console.WriteLine("图片生成错误");
+                        Console.WriteLine("图片生成错误"+e);
                     }
                 }
             }

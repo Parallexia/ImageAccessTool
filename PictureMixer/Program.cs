@@ -46,10 +46,10 @@ namespace PictureMixer
             DateTime beforDT = System.DateTime.Now;
             return beforDT;
         }
-        static void TimeStopStop(DateTime beforeDT)
+        static private void TimeStopStop(DateTime beforeDT)
         {
-            DateTime afterDT = System.DateTime.Now;
-            TimeSpan ts = afterDT.Subtract(beforeDT);
+            DateTime _afterDT = System.DateTime.Now;
+            TimeSpan ts = _afterDT.Subtract(beforeDT);
             Console.WriteLine("DateTime总共花费{0}s.", ts.TotalSeconds);
         }
     }

@@ -32,9 +32,9 @@ namespace PictureMixer
 
         private static string GetTime()
         {
-            DateTime dateTime =DateTime.Now;
-            dateTime.ToLocalTime();
-            string pathC = dateTime.Date + "" + dateTime.Hour + dateTime.Minute + dateTime.Second + "";
+            DateTime _dateTime =DateTime.Now;
+            _dateTime.ToLocalTime();
+            string pathC = _dateTime.Date + "" + _dateTime.Hour + _dateTime.Minute + _dateTime.Second + "";
             pathC = pathC.Replace('/','-');
             pathC = pathC.Replace(' ', '-');
             pathC = pathC = pathC.Replace(':', '-');

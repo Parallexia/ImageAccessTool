@@ -77,9 +77,9 @@ namespace PictureMixer
                 height = (int)y;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("图片大小变化未成功");
+                Console.WriteLine("图片大小变化未成功"+e);
                 return bitmap;
             }
             bitmap = new Bitmap(bitmap, width, height);
@@ -189,13 +189,17 @@ namespace PictureMixer
                         + bitmapLayer.GetPixel(width, height).B * 0.11);
 
                     greyLayer = (int)((greyLayer/256F)*128 + 127);
+
                     //a(mix) = 1 - r1 + r2
 
                     alpha = 255 - (greyLayer - greyBelow);
+
                     //r(mix) = r(2)/a(mix)
 
                     float greyfloat =  255 * (greyBelow/(alpha+0.01F));
                     grey = (int)Math.Ceiling(greyfloat);
+
+
                     Color color = Color.FromArgb(alpha, grey, grey, grey);
                     try
                     {

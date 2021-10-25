@@ -19,3 +19,4 @@ D:\code_files\c#\PictureMixer\PictureMixer\obj\Debug\net5.0\PictureMixer.dll
 D:\code_files\c#\PictureMixer\PictureMixer\obj\Debug\net5.0\ref\PictureMixer.dll
 D:\code_files\c#\PictureMixer\PictureMixer\obj\Debug\net5.0\PictureMixer.pdb
 D:\code_files\c#\PictureMixer\PictureMixer\obj\Debug\net5.0\PictureMixer.genruntimeconfig.cache
+D:\code_files\c#\PictureMixer\PictureMixer\obj\Debug\net5.0\PictureMixer.csproj.CopyComplete

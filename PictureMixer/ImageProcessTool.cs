@@ -18,7 +18,7 @@ namespace PictureMixer
             catch (Exception)
             {
 
-                Console.WriteLine("你输入的路径不正确"); ;
+                Console.WriteLine("你输入的路径不正确");
             }
 
         }

@@ -7,7 +7,9 @@ namespace PictureMixer
 {
     class Program
     {
+#pragma warning disable IDE0060 // 删除未使用的参数
         static void Main(string[] args)
+#pragma warning restore IDE0060 // 删除未使用的参数
         {
             string pathC = @GetTime();
             Console.WriteLine("输入表层图片的路径");
@@ -15,7 +17,7 @@ namespace PictureMixer
             Console.WriteLine("输入底层图片的路径");
             string pathB = Console.ReadLine();
             string pathsave = pathC + ".png";
-            Bitmap bitmap = new Bitmap(1, 1);
+            Bitmap bitmap = new(1, 1);
             DateTime time1 = new();
             time1 = TimeStopStart();
             bitmap = ToMixtureImage(pathA, pathB, bitmap);

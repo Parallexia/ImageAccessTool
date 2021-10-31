@@ -63,6 +63,8 @@ namespace PictureMixer
             height = bitmap.Height;
             Console.WriteLine("x轴变化倍数:" + (newBitmap.Width / width));
             Console.WriteLine("Y轴变化倍数:" + (newBitmap.Height / height));
+
+            bitmap.Dispose();
             return newBitmap;
         }
         public static Bitmap ChangeImageScale(int x, int y, Bitmap bitmap)
@@ -82,10 +84,12 @@ namespace PictureMixer
                 Console.WriteLine("图片大小变化未成功"+e);
                 return bitmap;
             }
-            bitmap = new Bitmap(bitmap, width, height);
+            Bitmap bitmapResult = new Bitmap(bitmap, width, height);
             Console.WriteLine("x轴变化倍数:" + (width1 / width));
             Console.WriteLine("Y轴变化倍数:" + (height1 / height));
-            return bitmap;
+
+            bitmap.Dispose();
+            return bitmapResult;
         }
         
         public static Bitmap ChangeImageScale(SizeOfImage sizeofImage, Bitmap bitmap)
@@ -107,7 +111,7 @@ namespace PictureMixer
                 return bitmap;
             }
 
-            Size size = new Size
+            Size size = new()
             {
                 Width = width,
                 Height = height
@@ -161,7 +165,8 @@ namespace PictureMixer
             layerSize = GetImageSize(bitmapLayer);//缩略图打开时
 
             bitmap = ChangeImageScale(layerSize,bitmap);
-
+            Color color;
+            float greyfloat;
             /*对表图和里图进行像素的运算*/
 
             for (int height = 1; height < layerSize.height; height++)
@@ -196,11 +201,11 @@ namespace PictureMixer
 
                     //r(mix) = r(2)/a(mix)
 
-                    float greyfloat =  255 * (greyBelow/(alpha+0.01F));
+                    greyfloat =  255 * (greyBelow/(alpha+0.01F));
                     grey = (int)Math.Ceiling(greyfloat);
 
 
-                    Color color = Color.FromArgb(alpha, grey, grey, grey);
+                    color = Color.FromArgb(alpha, grey, grey, grey);
                     try
                     {
                         bitmap.SetPixel(width, height, color);
